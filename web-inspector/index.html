@@ -1,1 +1,205 @@
-aaaaa
+<!DOCTYPE html>
+<html lang="ja" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <!--共通部分ここから-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    
+    <title>ウェブインスペクター　鳥大フィル
+    </title>
+    <style>
+        .logo{
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+        .wrapper{
+    min-height: 100vh;
+}
+
+footer{
+    /*footerの装飾*/
+    width: 100%;
+    margin-top: 50px;
+}
+    </style>
+    <!--共通部分ここまで-->
+</head>
+<body >
+    <!--共通ヘッダー-->
+    <header class="navbar hero is-link is-bold">
+        <div class="navbar-brand">
+            <span class="navbar-item">
+                <a href="./index.html" class="logo title">Web inspector</a>
+            </span>
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="field has-addons">
+                        <div class="control">
+                            <a href="./contact.html" class="button is-link is-dark">お問い合わせ</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tabs is-centered is-large">
+            <ul>
+              <li><a href="./.html">予約状況を見る</a></li>
+              <li><a href="./index.html">予約をする</a></li>
+            </ul>
+          </div>
+    </header>
+
+    <!--固有コンテンツ-->
+    <div id="EnterSearchWords">
+    <div class="container" style="margin-top: 10px;">
+        <div class="content">
+
+            <div id="circle">
+            <div class="box" style=" text-align: center;">
+            <label class="label">サークルを選択してください</label>
+            <div>
+            <label class="radio" style="margin-right: 10px;">
+                <input type="radio" name="culture" id="culture" onchange="Changed_type(this.id)" />
+                文化系
+              </label>
+            <div class="select">
+                <select id="Culture_circle" disabled>
+                    <option value=0>選択してください</option>
+                    <option value=1>吹奏楽団ウィンドアンサンブル</option>
+                    <option value=2>JAZZ & FUSION研究会</option>
+                    <option value=3>SF研究会</option>
+                    <option value=4>フィルハーモニー管弦楽団</option>
+                  </select>
+            </div>
+        </div>
+            <div style="margin-top: 10px;">
+            <label class="radio" style="margin-right: 10px;">
+                <input type="radio" name="sports" id="sports" onchange="Changed_type(this.id)" />
+                体育系
+              </label>
+            <div class="select">
+                <select id="Sports_circle" disabled>
+                    <option value=0>選択してください</option>
+                    <option value=1>馬術部</option>
+                    <option value=2>JAZZ & FUSION研究会</option>
+                    <option value=3>SF研究会</option>
+                    <option value=4>フィルハーモニー管弦楽団</option>
+                  </select>
+            </div>
+        </div>
+        </div>
+        <button class="button is-medium is-fullwidth" onclick="progress('form')"><span class="material-symbols-outlined">
+            次へ進む
+            </span></button>
+        </div>
+
+
+
+
+    <div id="form" style="display: none;">
+
+        <div  id="day" style="display: none;">
+        <label class="label" style="margin-top: 20px;">〇月〇日</label>
+        <div class="box" id="hope-1">
+        <label class="label">第一希望</label>
+        <div class="select">
+            <select id="select-1" onchange="">
+                <option value="0">--</option>
+                <option value="A1">大集会室</option>
+                <option value="B1">中集会室1</option>
+                <option value="B2">中集会室2</option>
+                <option value="B3">中集会室3</option>
+                <option value="C1">小集会室1</option>
+                <option value="C2">小集会室2</option>
+                <option value="C3">小集会室3</option>
+                <option value="A2">娯楽室</option>
+                <option value="A3">談話室</option>
+                <option value="B4">中集会室4</option>
+                <option value="B5">中集会室5</option>
+                <option value="C4">小集会室4</option>
+                <option value="C5">小集会室5</option>
+                <option value="C6">小集会室6</option>
+              </select>
+        </div>
+        </div>
+        <div id="text-1" style="display: none;">
+        <input class="input" type="text" id="text-input-1">
+        </div>
+    <button class="button is-medium is-fullwidth" onclick="addWords(this.id)"><span class="material-symbols-outlined">
+        ＋
+        </span></button>
+    </div>
+    <div id="comment" class="box" style="margin-top: 20px;">
+        <label class="label">その他伝達事項など</label>
+    <input class="input" type="text" id="comment">
+    </div>
+
+        <button class="button is-medium is-fullwidth" style="margin-top: 20px;" onclick="progress('circle')">サークル選択に戻る</button>
+        <button class="button is-medium is-fullwidth is-link" style="margin-top: 20px;" onclick="search()">送信する</button>
+
+
+
+        
+        <div class="box" id="hope-hidden" style="display: none;">
+            <label class="label">第n希望</label>
+            <div class="select">
+                <select id="select-1" onchange="">
+                    <option value="0">--</option>
+                    <option value="A1">大集会室</option>
+                    <option value="B1">中集会室1</option>
+                    <option value="B2">中集会室2</option>
+                    <option value="B3">中集会室3</option>
+                    <option value="C1">小集会室1</option>
+                    <option value="C2">小集会室2</option>
+                    <option value="C3">小集会室3</option>
+                    <option value="A2">娯楽室</option>
+                    <option value="A3">談話室</option>
+                    <option value="B4">中集会室4</option>
+                    <option value="B5">中集会室5</option>
+                    <option value="C4">小集会室4</option>
+                    <option value="C5">小集会室5</option>
+                    <option value="C6">小集会室6</option>
+                  </select>
+            </div>
+            <div id="text-1" style="display: none;">
+            <input class="input" type="text" id="text-input-1">
+            </div>
+            <div class="level-right" style="margin-top: 10px;">
+            <button class="button is-danger is-outlined" id="delbutton-hidden" onclick="deleteWord(this.id)"><span class="material-symbols-outlined">
+                🗑
+                </span></button>
+            </div>
+        </div>
+    </div>
+</div><!--/content-->
+    </div><!--/container-->
+</div><!--entersearchwords-->
+</div>
+</div>
+
+    <!--共通フッター-->
+    <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+            <strong>Webinspector</strong> by <a href="">鳥取大学フィルハーモニー管弦楽団</a>.
+            The source code is licensed
+            <a href="https://opensource.org/license/mit">MIT</a>.  The
+            website content is licensed
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0//"
+              >CC BY NC SA 4.0</a
+            >.
+          </p>
+        </div>
+      </footer>
+      <script src="./script.js"></script>
+</body>
+</html>
